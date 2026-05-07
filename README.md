@@ -21,6 +21,9 @@ make clean    # Remove a pasta de build
 ```
 
 ### Opção 2: Via Visual Studio (Windows)
+
+OBS: Para executar esse projeto com Visual Studio é necessário que ele tenha sido instalado com a carga de trabalho **Desenvolvimento para desktop com C++** e os componentes **MSVC** e **SDK do Windows 10/11**. Isso pode ser verificado abrindo o Visual Studio Installer clicando em Modificar e verificando se Desenvolvimento para desktop com C++ está habilitado, e se os componentes citados estão habilitados também.
+
 1. Abra o Visual Studio e selecione **"Abrir uma Pasta Local"**.
 2. Escolha a raiz deste projeto. O VS detectará o arquivo `CMakeLists.txt` automaticamente.
 3. Altere a configuração de build para **Release** no menu superior.
@@ -32,5 +35,5 @@ Caso prefira não usar o Makefile:
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --config Release
-./build/bin/sortbenchmark.out
+./build/bin/sortbenchmark
 ```
