@@ -12,11 +12,10 @@ endif()
 
 find_package(benchmark REQUIRED)
 
-# 1. Aponta para os arquivos dentro de src/
-# É boa prática listar os arquivos explicitamente
-add_executable(sortbenchmark.out src/benchmark.cpp)
-
-# 2. Garante que o binário final vá para build/bin
+# Garante que o binário final vá para build/bin
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-target_link_libraries(sortbenchmark.out PRIVATE benchmark::benchmark)
+# Aponta para os arquivos dentro de src/
+add_executable(sortbenchmark src/benchmark.cpp)
+
+target_link_libraries(sortbenchmark benchmark::benchmark)
