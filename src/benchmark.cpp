@@ -6,8 +6,11 @@
 #include "mergesort.hpp"
 #include "utils.hpp"
 
+// Defines SortAlgorithm as a function that receives a vector of integers
+using SortAlgorithm = void (*)(std::vector<int> &);
+
 // Generic function for benchmarking sorting algorithms
-template <void (*SortFunc)(std::vector<int>)> static void BM_Sort(benchmark::State &state) {
+template <SortAlgorithm SortFunc> static void BM_Sort(benchmark::State &state) {
     const int N = state.range(0);
 
     for (auto _ : state) {

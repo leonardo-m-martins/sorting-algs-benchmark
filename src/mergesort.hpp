@@ -32,7 +32,7 @@ void merge_sort(int *array, int *aux, int start, int end) {
     }
 }
 
-void merge_sort(std::vector<int> array) {
+void merge_sort(std::vector<int> &array) {
     int size = array.size();
     std::vector<int> aux(size);
     merge_sort(array.data(), aux.data(), 0, size - 1);
