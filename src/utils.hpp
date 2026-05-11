@@ -8,6 +8,9 @@ namespace benchmark_utils {
 // Isso é usado para criar funções genéricas para cada tipo de algoritmo
 using sort_algorithm = void (*)(std::vector<int> &);
 
+// Tipo genérico para uma função qualquer que gera um vetor de inteiros.
+using vector_generator = std::vector<int> (*)(size_t n);
+
 // Gera um vetor com dados aleatórios
 std::vector<int> generate_random_vector(size_t n) {
     std::vector<int> v(n);
@@ -19,6 +22,25 @@ std::vector<int> generate_random_vector(size_t n) {
     return v;
 }
 
+// Gera um vetor ordenado em ordem crescente
+std::vector<int> generate_ascending_vector(size_t n) {
+    std::vector<int> v(n);
+    int i = 0;
+    for (int &element : v)
+        element = i++;
+    return v;
+}
+
+// Gera um vetor ordenado em ordem decrescente
+std::vector<int> generate_descending_vector(size_t n) {
+    std::vector<int> v(n);
+    int i = n;
+    for (int &element : v)
+        element = i--;
+    return v;
+}
+
+// Verifica se um vetor está ordenado
 bool is_sorted(std::vector<int> &v) {
     int last = v.at(0);
     for (int n : v) {
