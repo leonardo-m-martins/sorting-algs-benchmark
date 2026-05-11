@@ -8,8 +8,8 @@
 using namespace benchmark_utils;
 
 void print_is_sorted(std::vector<int> &v, std::string msg) {
-    std::string is_sorted = benchmark_utils::is_sorted(v) ? "Ordenado" : "Nao ordenado";
-    std::cout << std::left << std::setw(20) << msg + ":" << is_sorted << std::endl;
+    std::string sort_status = is_sorted(v) ? "Ordenado" : "Nao ordenado";
+    std::cout << std::left << std::setw(20) << msg + ":" << sort_status << std::endl;
 }
 
 void test_alg(sort_algorithm sort_function, std::string func_name, std::vector<int> &v) {
@@ -20,7 +20,7 @@ void test_alg(sort_algorithm sort_function, std::string func_name, std::vector<i
 
 int main() {
     int N = 10000;
-    auto rd_vector = benchmark_utils::generate_random_vector(N);
+    auto rd_vector = generate_random_vector(N);
     print_is_sorted(rd_vector, "Vetor randomico");
 
     test_alg(merge_sort, "Merge sort", rd_vector);
