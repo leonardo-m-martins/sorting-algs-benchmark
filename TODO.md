@@ -1,0 +1,7 @@
+- [ ] Bubble sort (em andamento)
+- [ ] Selection sort
+- [ ] Insertion sort
+- [x] Merge sort
+- [ ] Quick sort
+- [ ] Heap sort
+- [x] Radix sort
