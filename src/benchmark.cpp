@@ -10,11 +10,14 @@
 /**
  * Macro usado para fazer o benchmark de um agoritmo pelos 3 tipos de dados requisitados:
  * aleatório, ordenado (crescente), ordenado (decrescente).
+ * Params:
+ *  alg: algoritmo de ordenação do tipo sort_algorithm
+ *  settings: aplica as configurações do benchmark
  */
-#define BENCHMARK_SORT(alg)                                                                                            \
-    BENCHMARK_TEMPLATE(BM_sort, alg, generate_random_vector)->Apply(config_settings);                                  \
-    BENCHMARK_TEMPLATE(BM_sort, alg, generate_ascending_vector)->Apply(config_settings);                               \
-    BENCHMARK_TEMPLATE(BM_sort, alg, generate_descending_vector)->Apply(config_settings);
+#define BENCHMARK_SORT(alg, settings)                                                                                            \
+    BENCHMARK_TEMPLATE(BM_sort, alg, generate_random_vector)->Apply(settings);                                  \
+    BENCHMARK_TEMPLATE(BM_sort, alg, generate_ascending_vector)->Apply(settings);                               \
+    BENCHMARK_TEMPLATE(BM_sort, alg, generate_descending_vector)->Apply(settings);
 
 using namespace benchmark_utils;
 
@@ -34,8 +37,8 @@ template <sort_algorithm sort_function, vector_generator generate_vector> static
     state.SetComplexityN(N);
 }
 
-// Função que de configuração de todos os benchmarks
-void config_settings(benchmark::internal::Benchmark *benchmark) {
+// Função de configuração de algoritmos O(NlogN) ou O(N)
+void fast_settings(benchmark::internal::Benchmark *benchmark) {
     benchmark
         ->Arg(1000000)
         ->Arg(2000000)
@@ -43,8 +46,17 @@ void config_settings(benchmark::internal::Benchmark *benchmark) {
         ->Unit(benchmark::kMicrosecond);
 }
 
+// Função de configuração de algoritmos O(N²)
+void slow_settings(benchmark::internal::Benchmark *benchmark) {
+    benchmark
+        ->Arg(100000)
+        ->Arg(200000)
+        ->Arg(400000)
+        ->Unit(benchmark::kMicrosecond);
+}
+
 // Inserir chamadas para benchmark abaixo
-BENCHMARK_SORT(merge_sort);
-BENCHMARK_SORT(radix_sort);
+BENCHMARK_SORT(merge_sort, fast_settings);
+BENCHMARK_SORT(radix_sort, fast_settings);
 
 BENCHMARK_MAIN();
