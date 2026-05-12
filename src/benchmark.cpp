@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "mergesort.hpp"
+#include "radixsort.hpp"
 #include "utils.hpp"
 
 /**
@@ -44,5 +45,6 @@ void config_settings(benchmark::internal::Benchmark *benchmark) {
 
 // Inserir chamadas para benchmark abaixo
 BENCHMARK_SORT(merge_sort);
+BENCHMARK_SORT(radix_sort);
 
 BENCHMARK_MAIN();

@@ -1,4 +1,5 @@
 #include "mergesort.hpp"
+#include "radixsort.hpp"
 #include "utils.hpp"
 #include <cstring>
 #include <iomanip>
@@ -24,4 +25,5 @@ int main() {
     print_is_sorted(rd_vector, "Vetor randomico");
 
     test_alg(merge_sort, "Merge sort", rd_vector);
+    test_alg(radix_sort, "Radix sort", rd_vector);
 }
