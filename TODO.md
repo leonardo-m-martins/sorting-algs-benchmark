@@ -1,4 +1,4 @@
-- [ ] Bubble sort (em andamento)
+- [x] Bubble sort
 - [x] Selection sort
 - [ ] Insertion sort
 - [x] Merge sort

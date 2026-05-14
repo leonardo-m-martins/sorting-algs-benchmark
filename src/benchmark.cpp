@@ -3,10 +3,12 @@
 #include <random>
 #include <vector>
 
+#include "bubblesort.hpp"
 #include "mergesort.hpp"
 #include "radixsort.hpp"
 #include "selectionsort.hpp"
 #include "utils.hpp"
+#include "bubblesort.hpp"
 
 /**
  * Macro usado para fazer o benchmark de um agoritmo pelos 3 tipos de dados requisitados:
@@ -44,21 +46,21 @@ void fast_settings(benchmark::internal::Benchmark *benchmark) {
         ->Arg(1000000)
         ->Arg(2000000)
         ->Arg(4000000)
+        ->Iterations(3)
         ->Unit(benchmark::kMicrosecond);
 }
 
 // Função de configuração de algoritmos O(N²)
 void slow_settings(benchmark::internal::Benchmark *benchmark) {
     benchmark
-        ->Arg(100000)
-        ->Arg(200000)
-        ->Arg(400000)
-        ->Unit(benchmark::kMicrosecond);
+        ->Arg(62500)
+        ->Unit(benchmark::kSecond);
 }
 
 // Inserir chamadas para benchmark abaixo
 BENCHMARK_SORT(merge_sort, fast_settings);
 BENCHMARK_SORT(radix_sort, fast_settings);
 BENCHMARK_SORT(selection_sort, slow_settings);
+BENCHMARK_SORT(bubble_sort, fast_settings);
 
 BENCHMARK_MAIN();
