@@ -1,5 +1,6 @@
 #include "mergesort.hpp"
 #include "radixsort.hpp"
+#include "selectionsort.hpp"
 #include "utils.hpp"
 #include <cstring>
 #include <iomanip>
@@ -26,4 +27,5 @@ int main() {
 
     test_alg(merge_sort, "Merge sort", rd_vector);
     test_alg(radix_sort, "Radix sort", rd_vector);
+    test_alg(selection_sort, "Selection sort", rd_vector);
 }
