@@ -2,6 +2,8 @@
 #include "mergesort.hpp"
 #include "radixsort.hpp"
 #include "selectionsort.hpp"
+#include "heapsort.hpp"
+#include "insertionsort.hpp"
 #include "utils.hpp"
 #include <cstring>
 #include <iomanip>
@@ -26,8 +28,10 @@ int main() {
     auto rd_vector = generate_random_vector(N);
     print_is_sorted(rd_vector, "Vetor randomico");
 
+    test_alg(heap_sort, "Heap Sort", rd_vector);
+    test_alg(selection_sort, "Selection Sort", rd_vector);
     test_alg(merge_sort, "Merge sort", rd_vector);
     test_alg(radix_sort, "Radix sort", rd_vector);
-    test_alg(selection_sort, "Selection sort", rd_vector);
+    test_alg(insertion_sort, "Insertion sort", rd_vector);
     test_alg(bubble_sort, "Bubble sort", rd_vector);
 }
