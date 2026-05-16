@@ -4,6 +4,7 @@
 #include "selectionsort.hpp"
 #include "heapsort.hpp"
 #include "insertionsort.hpp"
+#include "quicksort.hpp"
 #include "utils.hpp"
 #include <cstring>
 #include <iomanip>
@@ -34,4 +35,5 @@ int main() {
     test_alg(radix_sort, "Radix sort", rd_vector);
     test_alg(insertion_sort, "Insertion sort", rd_vector);
     test_alg(bubble_sort, "Bubble sort", rd_vector);
+    test_alg(quick_sort, "Quick sort", rd_vector);
 }
