@@ -64,12 +64,21 @@ __attribute__((target("avx2"))) void selection_sort(int *array, uint32_t size) {
          *                      curr_idx se mask = 0xFFFFFFFF
          * curr_idxs = ...  incrementa os indices em 8 cada
          * */
-        for (; j + 7 < size; j += 8) {
-            __m256i vals = _mm256_loadu_si256((__m256i *)&array[j]);
-            __m256i mask = _mm256_cmpgt_epi32(min_vals, vals);
-            min_vals = _mm256_min_epi32(min_vals, vals);
-            min_idxs = _mm256_blendv_epi8(min_idxs, curr_idxs, mask);
-            curr_idxs = _mm256_add_epi32(curr_idxs, eights);
+        constexpr uint64_t step = 8;
+        constexpr uint64_t steps = 4;
+        constexpr uint64_t total = step * steps;
+        constexpr uint64_t total_mask = total - 1;
+        int64_t range = (int64_t) size - j;
+        int64_t limit = (range > total) ? (int64_t) size - (range & total_mask) : 0;
+        for (; j < limit; j += total) {
+            #pragma unroll(steps)
+            for (uint32_t k = 0; k < total; k+= step) {
+                __m256i vals = _mm256_loadu_si256((__m256i *)&array[j + k]);
+                __m256i mask = _mm256_cmpgt_epi32(min_vals, vals);
+                min_vals = _mm256_min_epi32(min_vals, vals);
+                min_idxs = _mm256_blendv_epi8(min_idxs, curr_idxs, mask);
+                curr_idxs = _mm256_add_epi32(curr_idxs, eights);
+            }
         }
 
         alignas(32) int min_vals_array[8];
