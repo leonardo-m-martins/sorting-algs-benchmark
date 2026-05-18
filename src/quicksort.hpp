@@ -1,7 +1,7 @@
 #pragma once
-#include <vector>
-#include <utility>
 #include <cstdlib>
+#include <utility>
+#include <vector>
 
 inline int partition(int *array, int start, int end) {
 

@@ -68,11 +68,12 @@ __attribute__((target("avx2"))) void selection_sort(int *array, uint32_t size) {
         constexpr uint64_t steps = 4;
         constexpr uint64_t total = step * steps;
         constexpr uint64_t total_mask = total - 1;
-        int64_t range = (int64_t) size - j;
-        int64_t limit = (range > total) ? (int64_t) size - (range & total_mask) : 0;
+        int64_t range = (int64_t)size - j;
+        int64_t limit = (range > total) ? (int64_t)size - (range & total_mask) : 0;
         for (; j < limit; j += total) {
-            #pragma unroll(steps)
-            for (uint32_t k = 0; k < total; k+= step) {
+
+#pragma unroll(steps)
+            for (uint32_t k = 0; k < total; k += step) {
                 __m256i vals = _mm256_loadu_si256((__m256i *)&array[j + k]);
                 __m256i mask = _mm256_cmpgt_epi32(min_vals, vals);
                 min_vals = _mm256_min_epi32(min_vals, vals);

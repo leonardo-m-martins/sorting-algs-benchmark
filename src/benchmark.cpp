@@ -4,14 +4,13 @@
 #include <vector>
 
 #include "bubblesort.hpp"
+#include "heapsort.hpp"
+#include "insertionsort.hpp"
 #include "mergesort.hpp"
+#include "quicksort.hpp"
 #include "radixsort.hpp"
 #include "selectionsort.hpp"
 #include "utils.hpp"
-#include "bubblesort.hpp"
-#include "heapsort.hpp"
-#include "insertionsort.hpp"
-#include "quicksort.hpp"
 
 /**
  * Macro usado para fazer o benchmark de um agoritmo pelos 3 tipos de dados requisitados:
@@ -20,9 +19,9 @@
  *  alg: algoritmo de ordenação do tipo sort_algorithm
  *  settings: aplica as configurações do benchmark
  */
-#define BENCHMARK_SORT(alg, settings)                                                                                            \
-    BENCHMARK_TEMPLATE(BM_sort, alg, generate_random_vector)->Apply(settings);                                  \
-    BENCHMARK_TEMPLATE(BM_sort, alg, generate_ascending_vector)->Apply(settings);                               \
+#define BENCHMARK_SORT(alg, settings)                                                                                  \
+    BENCHMARK_TEMPLATE(BM_sort, alg, generate_random_vector)->Apply(settings);                                         \
+    BENCHMARK_TEMPLATE(BM_sort, alg, generate_ascending_vector)->Apply(settings);                                      \
     BENCHMARK_TEMPLATE(BM_sort, alg, generate_descending_vector)->Apply(settings);
 
 using namespace benchmark_utils;

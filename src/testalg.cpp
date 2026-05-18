@@ -1,10 +1,10 @@
 #include "bubblesort.hpp"
-#include "mergesort.hpp"
-#include "radixsort.hpp"
-#include "selectionsort.hpp"
 #include "heapsort.hpp"
 #include "insertionsort.hpp"
+#include "mergesort.hpp"
 #include "quicksort.hpp"
+#include "radixsort.hpp"
+#include "selectionsort.hpp"
 #include "utils.hpp"
 #include <cstring>
 #include <iomanip>
@@ -25,7 +25,7 @@ void print_vector(std::vector<int> &v) {
     std::cout << "[...] ";
     for (size_t i = v.size() - 6; i < v.size(); i++) {
         std::cout << v[i] << ", ";
-    }    
+    }
     std::cout << std::endl;
 }
 

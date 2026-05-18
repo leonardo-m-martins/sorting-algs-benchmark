@@ -18,7 +18,7 @@ inline void heapify(std::vector<int> &arr, int n, int i) {
         if (largest == i) { // already fixed
             break;
         }
-        
+
         std::swap(arr[i], arr[largest]);
         i = largest;
     }
@@ -32,9 +32,9 @@ inline void build_max_heap(std::vector<int> &arr, int n) {
 
 inline void heap_sort(std::vector<int> &arr) {
     int n = arr.size();
-    
+
     build_max_heap(arr, n);
-    
+
     for (int i = n - 1; i > 0; i--) {
         std::swap(arr[0], arr[i]);
         heapify(arr, i, 0);

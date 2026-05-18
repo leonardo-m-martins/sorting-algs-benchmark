@@ -1,7 +1,7 @@
 #pragma once
-#include <vector>
-#include <cstring>
 #include <cstdint>
+#include <cstring>
+#include <vector>
 
 typedef struct {
     int max;
@@ -11,8 +11,10 @@ typedef struct {
 vector_info get_vector_info(int *array, size_t size) {
     vector_info v_info = {array[0], array[0]};
     for (int i = 0; i < size; i++) {
-        if (array[i] > v_info.max) v_info.max = array[i];
-        else if (array[i] < v_info.min) v_info.min = array[i];
+        if (array[i] > v_info.max)
+            v_info.max = array[i];
+        else if (array[i] < v_info.min)
+            v_info.min = array[i];
     }
 
     return v_info;
